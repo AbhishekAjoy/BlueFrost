@@ -1,0 +1,28 @@
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 30dvw;
+    min-width: 250px;
+    max-width: 350px;
+    height: 80dvh;
+    border-radius: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: white;
+}
+
+.location{
+    display: flex;
+    flex-direction: row;
+}
+
+#location-icon{
+    filter: invert(1);
+    padding-right: 5px;
+}
+#temperature{
+    font-size: 4em;
+}

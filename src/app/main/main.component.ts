@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherapiService } from '../_services/weatherapi.service';
-import { Current, Weather, Location} from '../_interfaces/weather.interface';
+import { Current, Weather, Location, Condition} from '../_interfaces/weather.interface';
 
 @Component({
   selector: 'app-main',
@@ -13,6 +13,7 @@ export class MainComponent implements OnInit {
   currentForecast: Partial<Weather> = {};
   currentWeather: Partial<Current> = {};
   currentLocation: Partial<Location> = {};
+  currentCondition: Partial<Condition> = {};
 
   ngOnInit(): void {
     if (!navigator.geolocation) {
@@ -35,6 +36,7 @@ export class MainComponent implements OnInit {
         console.log(this.currentForecast);
         this.currentWeather = this.currentForecast.current??{};
         this.currentLocation = this.currentForecast.location??{};
+        this.currentCondition = this.currentWeather.condition??{};
       },
       error: (error) => {
         console.log(error.error.message);

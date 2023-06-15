@@ -1,5 +1,10 @@
-<div class="container">
-    <h1>{{this.currentWeather.temp_c}}° C</h1>
-    <h3>{{this.currentLocation.name}},{{this.currentLocation.region}},{{this.currentLocation.country}}</h3>
-    <h3>Feels like: {{this.currentWeather.feelslike_c}}° C</h3>
+<div class="container" [ngStyle] = "currentWeather.is_day ? {'background-color':'skyblue'} : {'background-color': 'navy'}">
+    <img [src]="currentCondition.icon" width="100px" alt="weather icon">
+    <h4>{{this.currentCondition.text}}</h4>
+    <h1 id = "temperature">{{this.currentWeather.temp_c | number: '1.0-0' }}° C</h1>
+    <div class="location">
+        <img id="location-icon" src="../../assets/location.svg" width="20px" alt="location icon">
+        <h3>{{this.currentLocation.name}},{{this.currentLocation.region}},{{this.currentLocation.country}}</h3>
+    </div>
+    <h4>Feels like: {{this.currentWeather.feelslike_c | number: '1.0-0' }}° C</h4>
 </div>
