@@ -1,14 +1,18 @@
-<div class="grid-container">
+<div class="grid-container" [ngStyle] = "weather.is_day ? {'background-color':'skyblue'} : {'background-color': 'navy'}">
     <div class="wind grid-item">
-        wind
+        <img class = "icon" src="../../assets/wind.png" alt="wind">
+        <p>Wind: {{weather.wind_kph}}km/h</p>
     </div>
     <div class="uv grid-item">
-        uv
+        <img class = "icon" src="../../assets/uv.png" alt="UV">
+        <p>UV index:{{weather.uv}}<br/><span [ngClass]="{'good-uv':uv <= 2, 'moderate-uv' : uv < 8 && uv > 2 , 'high-uv': uv > 8}"></span></p>
     </div>
     <div class="humidity grid-item">
-        humidity
+        <img class = "icon" src="../../assets/humidity.png" alt="humidity">
+        <p>Humidity: {{weather.humidity}}%</p>
     </div>
     <div class="air-quality grid-item">
-        air-quality
+        <img class = "icon" src="../../assets/air-quality.png" alt="air quality">
+        <p>AQI: {{airQuality}}</p>
     </div>
 </div>

@@ -1,5 +1,5 @@
 <div class="app-container">
-    <app-main></app-main>
+    <app-main (weatherData) = "getWeather($event)"></app-main>
     <!--<app-search></app-search>-->
-    <app-weatherdetails></app-weatherdetails>
+    <app-weatherdetails [weather] = "this.weatherData"></app-weatherdetails>
 </div>

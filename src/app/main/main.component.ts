@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { WeatherapiService } from '../_services/weatherapi.service';
 import { Current, Weather, Location, Condition} from '../_interfaces/weather.interface';
 
@@ -9,6 +9,8 @@ import { Current, Weather, Location, Condition} from '../_interfaces/weather.int
 })
 export class MainComponent implements OnInit {
   constructor(private weatherapiService: WeatherapiService) {}
+
+  @Output() weatherData = new EventEmitter<Partial<Current>>;
 
   currentForecast: Partial<Weather> = {};
   currentWeather: Partial<Current> = {};
@@ -25,7 +27,7 @@ export class MainComponent implements OnInit {
           localStorage.setItem('longitude',position.coords.longitude.toString());
         },
         () => {
-          console.log('unable to retreive your position');
+          alert('unable to retreive your position! Please Refresh Page');
         },
         { timeout: 10000 }
       );
@@ -37,7 +39,7 @@ export class MainComponent implements OnInit {
         this.currentWeather = this.currentForecast.current??{};
         this.currentLocation = this.currentForecast.location??{};
         this.currentCondition = this.currentWeather.condition??{};
-      },
+        this.weatherData.emit(this.currentWeather);    },
       error: (error) => {
         console.log(error.error.message);
       },

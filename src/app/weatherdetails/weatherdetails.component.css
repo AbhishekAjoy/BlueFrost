@@ -1,11 +1,13 @@
 .grid-container{
-    margin-left: 10px;
-    height: 80dvh;
+    margin-left: 15px;
+    height: 77dvh;
+    width: 35vw;
+    min-width: 300px;
+    max-height: 80dvh;
     display: grid;
     grid-template-columns: auto auto;
-    background-color: navy;
-    gap:15px;
-    padding: 15px;
+    gap:20px;
+    padding: 25px;
     border-radius: 15px;
 }
 
@@ -14,8 +16,28 @@
     padding: 20px;
     font-size: 30px;
     text-align: center;
+    min-width:170px;
+    max-width: 200px;
+    max-height: 200px;
     border-radius: 15px;
     box-shadow: 
     12px 12px 16px 0 rgba(0, 0, 0, 0.25),
     -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
+}
+
+.icon{
+    width: 100px;
+}
+
+.good-uv:before{
+    content: '(Good)';
+    font-size: 0.6em;
+}
+.moderate-uv:before{
+    content: '(Moderate)';
+    font-size: 0.6em;
+}
+.High-uv:before{
+    content: '(High)';
+    font-size: 0.6em;
 }

@@ -11,6 +11,7 @@ export class WeatherapiService {
 
   readonly BASE_URL = 'http://api.weatherapi.com/v1/current.json?key=' + environment.API_KEY;
 
+
   getWeather(city: string){
     return this.http.get(this.BASE_URL + '&q=' + city + '&aqi=yes');
   }
