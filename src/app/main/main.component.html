@@ -1,4 +1,4 @@
-<div class="container" [ngStyle] = "currentWeather.is_day ? {'background-color':'skyblue'} : {'background-color': 'navy'}">
+<div class="container" [ngStyle] = "currentWeather.is_day ? {'background-color':'#0073e6'} : {'background-color': 'navy'}">
     <img [src]="currentCondition.icon" width="100px" alt="weather icon">
     <h4>{{this.currentCondition.text}}</h4>
     <h1 id = "temperature">{{this.currentWeather.temp_c | number: '1.0-0' }}° C</h1>
@@ -7,4 +7,5 @@
         <h3>{{this.currentLocation.name}},{{this.currentLocation.region}},{{this.currentLocation.country}}</h3>
     </div>
     <h4>Feels like: {{this.currentWeather.feelslike_c | number: '1.0-0' }}° C</h4>
+    <h5>Last Updated: {{this.currentWeather.last_updated | date: 'shortTime'}}</h5>
 </div>

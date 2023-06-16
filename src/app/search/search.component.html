@@ -1,1 +1,10 @@
-<p>search works!</p>
+<div class="container" [ngStyle] = "isDay ? {'background-color':'#0073e6'} : {'background-color': 'navy'}">
+    <div class="card" tabIndex="1">
+        <input type="text" placeholder="Enter Location">
+        <button id="search-button" type = "submit"><img class = "icons" src="../../assets/search.png" alt="search"></button>
+    </div>
+
+    <div id ="current-location-card" class="card" role="button" tabindex="0">
+        <img class = "icons" src="../../assets/gps.png" alt="gps"><p>Use Current Location</p>
+    </div>
+</div>

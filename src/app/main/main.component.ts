@@ -27,7 +27,7 @@ export class MainComponent implements OnInit {
           localStorage.setItem('longitude',position.coords.longitude.toString());
         },
         () => {
-          alert('unable to retreive your position! Please Refresh Page');
+          console.log('unable to retreive your position! Please Refresh Page');
         },
         { timeout: 10000 }
       );

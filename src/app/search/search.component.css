@@ -1,0 +1,67 @@
+.container{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 15px;
+    height: 77dvh;
+    width: 35vw;
+    max-width:300px;
+    padding: 25px;
+    border-radius: 15px;
+}
+
+.card{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    font-size: 1.3em;
+    text-align: center;
+    max-width: 90%;
+    height: 20px;
+    border-radius: 15px;
+    box-shadow: 
+    12px 12px 16px 0 rgba(0, 0, 0, 0.25),
+    -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
+}
+
+.card:hover{
+    background-color: white;
+    box-shadow: 
+    12px 12px 16px 0 rgba(0, 0, 0, 0.398),
+    -8px -8px 12px 0 rgba(255, 255, 255, 0.482);
+}
+
+input{
+    background-color: transparent;
+    border:none;
+    width: 80%;
+    margin-left:5px;
+    height: 100%;
+}
+input:focus{
+    border: none;
+    outline: none;
+}
+.icons{
+    height:18px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+#search-button{
+    border: none;
+    background-color: transparent;
+}
+.icons:hover{
+    transform: scale(1.2,1.2);
+    cursor: pointer;
+}
+#current-location-card{
+    font-size: 0.9em;
+}
+#current-location-card:hover{
+    transform: scale(1.03,1.03);
+    cursor: pointer;
+}
