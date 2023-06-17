@@ -13,10 +13,11 @@ export class WeatherapiService {
   location$ = new Observable<Location | undefined>;
   condition$ = new Observable<Condition | undefined>;
 
+
   constructor(private http: HttpClient) {}
 
   readonly BASE_URL =
-    'http://api.weatherapi.com/v1/current.json?key=' + environment.API_KEY;
+    'https://api.weatherapi.com/v1/current.json?key=' + environment.API_KEY;
 
   getWeather(city: string) {
     return this.http.get(this.BASE_URL + '&q=' + city + '&aqi=yes');
@@ -37,7 +38,7 @@ export class WeatherapiService {
         () => {
           console.log('unable to retreive your position! Please Refresh Page');
         },
-        { timeout: 10000 }
+        { timeout: 3000 }
       );
     }
   }
@@ -56,7 +57,17 @@ export class WeatherapiService {
         this.location$ = this.weather$.pipe(map(x => x.location));
         this.condition$ = this.current$.pipe(map(x => x?.condition))
       },
-      error: (e) => console.log(e.error.message),
+      error: (e) => alert(e.error.message),
     });
+  }
+
+  getWeatherBySearchLocation(location: string){
+    let URL = this.BASE_URL + '&q='+location+'&aqi=yes';
+    this.http.get<Weather>(URL).subscribe({
+      next: (response) => {
+        this.weather$.next(response);
+      },
+      error: (e) => alert('Location not found!'),
+  });
   }
 }

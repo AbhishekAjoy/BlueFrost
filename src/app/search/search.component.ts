@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
+import { WeatherapiService } from '../_services/weatherapi.service';
 
 @Component({
   selector: 'app-search',
@@ -7,5 +8,19 @@ import { Component, Input } from '@angular/core';
 })
 export class SearchComponent {
 
-  @Input() isDay: number = 1;
+  constructor(public weatherapiService: WeatherapiService){}
+
+  searchTerm:string = '';
+
+  updateLocationKeyDown($event:any){
+    this.updateLocation();
+  }
+  updateLocation(){
+    this.searchTerm = '';
+    this.weatherapiService.getWeatherByCurrentLocation();
+  }
+
+  searchLocation(){
+    this.weatherapiService.getWeatherBySearchLocation(this.searchTerm.trim());
+  }
 }
