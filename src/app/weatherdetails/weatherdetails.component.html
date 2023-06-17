@@ -1,18 +1,34 @@
-<div class="grid-container" [ngStyle] = "weather.is_day ? {'background-color':'#0073e6'} : {'background-color': 'navy'}">
-    <div class="wind grid-item">
-        <img class = "icon" src="../../assets/wind.png" alt="wind">
-        <p>Wind: {{weather.wind_kph}}km/h</p>
-    </div>
-    <div class="uv grid-item">
-        <img class = "icon" src="../../assets/uv.png" alt="UV">
-        <p>UV index:{{weather.uv}}<br/><span [ngClass]="{'good-uv':uv <= 2, 'moderate-uv' : uv < 8 && uv > 2 , 'high-uv': uv > 8}"></span></p>
-    </div>
-    <div class="humidity grid-item">
-        <img class = "icon" src="../../assets/humidity.png" alt="humidity">
-        <p>Humidity: {{weather.humidity}}%</p>
-    </div>
-    <div class="air-quality grid-item">
-        <img class = "icon" src="../../assets/air-quality.png" alt="air quality">
-        <p>AQI: {{airQuality}}</p>
-    </div>
+<div
+  *ngIf="this.weatherapiService.current$ | async as current"
+  class="grid-container"
+  [ngStyle]="
+    current.is_day
+      ? { 'background-color': '#0073e6' }
+      : { 'background-color': 'navy' }
+  "
+>
+  <div class="wind grid-item">
+    <img class="icon" src="../../assets/wind.png" alt="wind" />
+    <p>Wind: {{ current.wind_kph }}km/h</p>
+  </div>
+  <div class="uv grid-item">
+    <img class="icon" src="../../assets/uv.png" alt="UV" />
+    <p>
+      UV index:{{ current.uv }}<br /><span
+        [ngClass]="{
+          'good-uv': current.uv <= 2,
+          'moderate-uv': current.uv < 8 && current.uv > 2,
+          'high-uv': current.uv > 8
+        }"
+      ></span>
+    </p>
+  </div>
+  <div class="humidity grid-item">
+    <img class="icon" src="../../assets/humidity.png" alt="humidity" />
+    <p>Humidity: {{ current.humidity }}%</p>
+  </div>
+  <div class="air-quality grid-item">
+    <img class="icon" src="../../assets/air-quality.png" alt="air quality" />
+    <p>AQI: {{ airQualityDesc[current.air_quality["us-epa-index"]] }}</p>
+  </div>
 </div>
