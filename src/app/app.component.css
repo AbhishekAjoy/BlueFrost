@@ -1,4 +1,64 @@
 .app-container{
-    display: flex;
+    display:flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100dvh;
+    width: 100dvw;
+    gap: 5px
+}
+
+@media only screen and (max-width: 768px) {
+    #mob{
+        height: 100dvh;
+    }
+    .content{
+        height: 95dvh;
+        display: flex;
+        flex-direction: row;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        -webkit-tap-highlight-color: transparent;
+    }
+    section{
+        width:100dvw;
+        height: 100dvh;
+        scroll-snap-align: center;
+    }
+    .app-container{
+        overflow-x: scroll;
+        gap: 0px;
+        display: block;
+        align-items: center;
+    }
+    #outlet{
+        height: 90dvw;
+    }
+    nav{
+        position: fixed;
+
+    }
+    .nav-list{
+        position: fixed;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        height: 5dvh;
+        width:100dvw;
+        overflow-x:hidden;
+    }
+    a{
+        text-decoration: none;
+    }
+    li{
+        list-style-type: none;
+        color: black;
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
+    a:focus{
+        border-bottom: 2px solid red;
+        color: navy;
+    }
 }

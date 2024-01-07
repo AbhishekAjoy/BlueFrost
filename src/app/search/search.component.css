@@ -1,15 +1,23 @@
-.container{
+.search-container{
     display:flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-left: 15px;
+    align-items: center;
     height: 77dvh;
-    width: 35vw;
+    width: 35dvw;
     max-width:300px;
     padding: 25px;
     border-radius: 15px;
 }
-
+.results-container{
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+    width: 22dvw;
+}
+.results-container > .card{
+    cursor:  pointer;
+}
 .card{
     display:flex;
     flex-direction: row;
@@ -19,6 +27,7 @@
     padding: 10px;
     font-size: 1.3em;
     text-align: center;
+    width: 30dvw;
     max-width: 90%;
     height: 20px;
     border-radius: 15px;
@@ -64,4 +73,27 @@ input:focus{
 #current-location-card:hover{
     transform: scale(1.03,1.03);
     cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+    .search-container{
+        width: 100dvw;
+        height: 95dvh;
+        padding:0px;
+        border-radius: 0;
+        max-width: none;
+    }
+    .card{
+        margin-top: 10px;
+        align-self: center;
+        width: 80dvw;
+        margin-bottom: 10px;
+    }
+
+    .results-container{
+        width: 80dvw;
+    }
+    .results-container > .card{
+        width: 80dvw;
+    }
 }

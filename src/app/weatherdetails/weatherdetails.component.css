@@ -1,24 +1,29 @@
 .grid-container{
-    margin-left: 15px;
     height: 77dvh;
-    width: 35vw;
-    min-width: 300px;
-    max-height: 80dvh;
+    width: 35dvw;
+    min-width: 200px;
+
     display: grid;
     grid-template-columns: auto auto;
-    gap:20px;
+    column-gap: 5px;
+    row-gap: 0px;
     padding: 25px;
     border-radius: 15px;
+    place-items: center;
 }
 
 .grid-item{
     background-color: rgba(255, 255, 255, 0.8);
     padding: 20px;
-    font-size: 24px;
+    font-size: 1rem;
+    font-weight: bold;
     text-align: center;
-    min-width:170px;
-    max-width: 200px;
-    max-height: 200px;
+    min-width:90px;
+    min-height: 90px;
+    width: 15dvw;
+    height:15dvw;
+    max-width: 150px;
+    max-height: 150px;
     border-radius: 15px;
     box-shadow: 
     12px 12px 16px 0 rgba(0, 0, 0, 0.25),
@@ -33,6 +38,7 @@
 }
 .icon{
     width: 100px;
+ 
 }
 
 .good-uv:before{
@@ -46,4 +52,30 @@
 .High-uv:before{
     content: '(High)';
     font-size: 0.6em;
+}
+
+@media only screen and (max-width: 768px) {
+
+    .grid-container{
+        width: 100dvw;
+        height:95dvh;
+        min-height: 95dvh;
+        padding: 0;
+        border-radius: 0;
+    }
+
+    .grid-item{
+        font-size: 1.2rem;
+        width: 35dvw;
+        height: 35dvw;
+        max-width: 50dvw;
+        max-height: 50dvw;
+    }
+
+    .icon{
+        width: 50px;
+    }
+    p{
+        margin: 0.2rem;
+    }
 }

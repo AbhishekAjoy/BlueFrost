@@ -1,4 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: 'Jost';
+    src: url('../src/assets/Jost-Light.ttf');
+  }
+  
+
 *{
     font-family: 'Jost', sans-serif;
+}
+html{
+  scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+}
+body{
+  margin: 0;
 }

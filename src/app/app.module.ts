@@ -8,6 +8,7 @@ import { MainComponent } from './main/main.component';
 import { SearchComponent } from './search/search.component';
 import { WeatherdetailsComponent } from './weatherdetails/weatherdetails.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

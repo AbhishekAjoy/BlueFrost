@@ -6,16 +6,10 @@ import { WeatherapiService } from '../_services/weatherapi.service';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css'],
 })
-export class MainComponent implements OnInit {
+export class MainComponent{
 
   constructor(public weatherapiService: WeatherapiService) { 
   }
-  ngOnInit(): void {
 
-    this.weatherapiService.getWeatherByCurrentLocation();
-  }
-
-
-  
 
 }

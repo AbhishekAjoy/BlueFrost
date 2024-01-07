@@ -1,5 +1,26 @@
 <div class="app-container">
-    <app-main></app-main>
-    <app-weatherdetails></app-weatherdetails>
-    <app-search></app-search>
+    <div id = "mob" *ngIf = "isMobile;else desktop">
+        <!-- <router-outlet id = "outlet"></router-outlet> -->
+        <div class = "content">
+            <section id = "search">
+                <app-search ></app-search>
+            </section>
+            <section id = "weather">
+                <app-main ></app-main>
+            </section>
+            <section id = "details">
+                <app-weatherdetails ></app-weatherdetails>
+            </section>
+        </div>
+        <nav class = "nav-list">
+            <li><a href="#search" >Search</a></li>
+            <li><a href="#weather" >Weather</a></li>
+            <li><a href="#details">Details</a></li>
+        </nav>
+    </div>
+    <ng-template #desktop>
+        <app-main></app-main>
+        <app-weatherdetails></app-weatherdetails>
+        <app-search></app-search>
+    </ng-template>
 </div>

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'environment';
 import { BehaviorSubject, Observable, map } from 'rxjs';
 import { Weather,Current, Condition ,Location} from '../_interfaces/weather.interface';
+import { Search } from '../_interfaces/search.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -13,11 +14,13 @@ export class WeatherapiService {
   location$ = new Observable<Location | undefined>;
   condition$ = new Observable<Condition | undefined>;
 
-
+  search$ = new BehaviorSubject<string[]>([]);
   constructor(private http: HttpClient) {}
 
   readonly BASE_URL =
     'https://api.weatherapi.com/v1/current.json?key=' + environment.API_KEY;
+
+  readonly SEARCH_API_URL = "https://api.geoapify.com/v1/geocode/autocomplete?apiKey=" + environment.AUTOCOMPLETE_API;
 
   getWeather(city: string) {
     return this.http.get(this.BASE_URL + '&q=' + city + '&aqi=yes');
@@ -58,6 +61,15 @@ export class WeatherapiService {
         this.condition$ = this.current$.pipe(map(x => x?.condition))
       },
       error: (e) => alert(e.error.message),
+    });
+  }
+
+  getSearchResults(input: string){
+
+    let URL = this.SEARCH_API_URL + '&text=' + input;
+    this.http.get<Search>(URL).subscribe({
+      next: response => this.search$.next(response.features.map(x => x.properties.address_line1)),
+      error: e => console.error('search failed')
     });
   }
 
