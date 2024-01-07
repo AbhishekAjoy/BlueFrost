@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'environment';
+import { environment } from '../../../environment';
 import { BehaviorSubject, Observable, map } from 'rxjs';
 import { Weather,Current, Condition ,Location} from '../_interfaces/weather.interface';
 import { Search } from '../_interfaces/search.interface';
