@@ -1,5 +1,6 @@
 [build]
     functions = "./functions"
+    publish = "dist/blue-frost"
 
 [dev]
     functions = "./functions"
