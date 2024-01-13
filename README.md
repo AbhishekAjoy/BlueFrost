@@ -3,14 +3,14 @@
 A weather app, shows weather of current location and other locations.
 Live link: https://bluefrost.netlify.app/
 
-##Features:
+## Features:
 - Temperature, windspeed, AQI etc.
 - Theme change according to day/night time.
 - Search/Current geolocation based weather.
 - Search Auto-complete implemented.
 - API requests performed using Netlify functions to avoid API key leaks
 
-##Working on/TODO:
+## Working on/TODO:
 - First Load requiring reload as location is not accessible after user gives permission for first time.
 - Handling negative search cases.
 - Navigation indicators/icons
