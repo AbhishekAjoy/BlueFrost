@@ -12,6 +12,7 @@ const handler = async (event) => {
 
   BASE_URL = 'https://api.weatherapi.com/v1/current.json?key=' + API_KEY;
   let URL = getWeatherByCurrentLocation(BASE_URL,lat,long);
+  console.log(URL);
   try {
     const { data } = await axios.get(URL)
 
