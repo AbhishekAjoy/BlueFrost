@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../../environment';
 import { BehaviorSubject, Observable, map } from 'rxjs';
 import { Weather,Current, Condition ,Location} from '../_interfaces/weather.interface';
 import { Search } from '../_interfaces/search.interface';
@@ -17,14 +16,6 @@ export class WeatherapiService {
   search$ = new BehaviorSubject<string[]>([]);
   constructor(private http: HttpClient) {}
 
-  readonly BASE_URL =
-    'https://api.weatherapi.com/v1/current.json?key=' + environment.API_KEY;
-
-  readonly SEARCH_API_URL = "https://api.geoapify.com/v1/geocode/autocomplete?apiKey=" + environment.AUTOCOMPLETE_API;
-
-  getWeather(city: string) {
-    return this.http.get(this.BASE_URL + '&q=' + city + '&aqi=yes');
-  }
 
   getLocation() {
     if (!navigator.geolocation) {
@@ -50,36 +41,32 @@ export class WeatherapiService {
     let lat: string = localStorage.getItem('latitude') ?? 'error';
     let long: string = localStorage.getItem('longitude') ?? 'error';
     if (lat === 'error' || long === 'error') {
-      throw Error('User Location not available');
+       throw Error('User Location not available');
     }
-    let URL = this.BASE_URL + '&q=' + lat + ',' + long + '&aqi=yes';
-    this.http.get<Weather>(URL).subscribe({
-      next: (response) => {
-        this.weather$.next(response);
-        this.current$ = this.weather$.pipe(map(x => x.current));
-        this.location$ = this.weather$.pipe(map(x => x.location));
-        this.condition$ = this.current$.pipe(map(x => x?.condition))
-      },
-      error: (e) => alert(e.error.message),
+    fetch(`/.netlify/functions/fetch-weather?lat=${lat}&long=${long}`).then(function(response) {
+      return response.json();
+    }).then((data: Weather) => {
+       // this will be a string
+       this.weather$.next(data);
+       this.current$ = this.weather$.pipe(map(x => x.current));
+       this.location$ = this.weather$.pipe(map(x => x.location));
+       this.condition$ = this.current$.pipe(map(x => x?.condition))
     });
   }
 
   getSearchResults(input: string){
-
-    let URL = this.SEARCH_API_URL + '&text=' + input;
-    this.http.get<Search>(URL).subscribe({
-      next: response => this.search$.next(response.features.map(x => x.properties.address_line1)),
-      error: e => console.error('search failed')
+    fetch(`/.netlify/functions/search-complete?input=${input}`).then(function(response) {
+      return response.json();
+    }).then((data: Search) => {
+       this.search$.next(data.features.map(x => x.properties.address_line1))
     });
   }
 
   getWeatherBySearchLocation(location: string){
-    let URL = this.BASE_URL + '&q='+location+'&aqi=yes';
-    this.http.get<Weather>(URL).subscribe({
-      next: (response) => {
-        this.weather$.next(response);
-      },
-      error: (e) => alert('Location not found!'),
+  fetch(`/.netlify/functions/search-weather?loc=${location}`).then(function(response) {
+    return response.json();
+  }).then((data: Weather) => {
+    this.weather$.next(data);
   });
   }
 }

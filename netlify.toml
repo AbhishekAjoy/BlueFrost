@@ -1,0 +1,8 @@
+[build]
+    functions = "./functions"
+
+[dev]
+    functions = "./functions"
+    command = "npm run start"
+    publish = "src"
+    targetPort = 4200
