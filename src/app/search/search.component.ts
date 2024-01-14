@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { WeatherapiService } from '../_services/weatherapi.service';
-
+import { Location } from '../_interfaces/weather.interface';
 
 @Component({
   selector: 'app-search',
@@ -19,14 +19,15 @@ export class SearchComponent {
   updateLocation(){
     this.searchTerm = '';
     this.weatherapiService.getWeatherByCurrentLocation();
+    document.getElementById('weather')?.scrollIntoView();
   }
 
   searchLocation(){
     this.weatherapiService.getSearchResults(this.searchTerm.trim());
   }
-  searchFromResult(result: string){
+  searchFromResult(result: Location){
     this.weatherapiService.getWeatherBySearchLocation(result);
-    window.location.href = '/#weather';
+    document.getElementById('weather')?.scrollIntoView();
     this.weatherapiService.search$.next([]);
     this.searchTerm = '';
   }

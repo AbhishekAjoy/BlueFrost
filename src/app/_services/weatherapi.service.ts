@@ -13,7 +13,7 @@ export class WeatherapiService {
   location$ = new Observable<Location | undefined>;
   condition$ = new Observable<Condition | undefined>;
 
-  search$ = new BehaviorSubject<string[]>([]);
+  search$ = new BehaviorSubject<Location[]>([]);
   constructor(private http: HttpClient) {}
 
 
@@ -36,13 +36,8 @@ export class WeatherapiService {
       );
     }
   }
-  getWeatherByCurrentLocation() {
-    this.getLocation();
-    let lat: string = localStorage.getItem('latitude') ?? 'error';
-    let long: string = localStorage.getItem('longitude') ?? 'error';
-    if (lat === 'error' || long === 'error') {
-       throw Error('User Location not available');
-    }
+
+  setWeather(lat: string, long: string){
     fetch(`/.netlify/functions/fetch-weather?lat=${lat}&long=${long}`).then(function(response) {
       return response.json();
     }).then((data: Weather) => {
@@ -53,20 +48,25 @@ export class WeatherapiService {
        this.condition$ = this.current$.pipe(map(x => x?.condition))
     });
   }
+  getWeatherByCurrentLocation() {
+    this.getLocation();
+    let lat: string = localStorage.getItem('latitude') ?? 'error';
+    let long: string = localStorage.getItem('longitude') ?? 'error';
+    if (lat === 'error' || long === 'error') {
+       throw Error('User Location not available');
+    }
+    this.setWeather(lat, long);
+  }
 
   getSearchResults(input: string){
     fetch(`/.netlify/functions/search-complete?input=${input}`).then(function(response) {
       return response.json();
-    }).then((data: Search) => {
-       this.search$.next(data.features.map(x => x.properties.address_line1))
+    }).then((data: Location[]) => {
+       this.search$.next(data)
     });
   }
 
-  getWeatherBySearchLocation(location: string){
-  fetch(`/.netlify/functions/search-weather?loc=${location}`).then(function(response) {
-    return response.json();
-  }).then((data: Weather) => {
-    this.weather$.next(data);
-  });
+  getWeatherBySearchLocation(location: Location){
+    this.setWeather(location.lat.toString(),location.lon.toString());
   }
 }

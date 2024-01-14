@@ -5,7 +5,7 @@
     </div>
     <div *ngIf = "this.weatherapiService.search$ | async as search" class = "results-container">
         <div *ngFor = "let item of search" class = card (click) = "searchFromResult(item)">
-            {{item}}
+            {{item.name}}, {{item.region}}, {{item.country}}
         </div>
     </div>
     <div id ="current-location-card" class="card" role="button" tabindex="0" (click) = "updateLocation()" (keydown.enter) = "updateLocationKeyDown($event)">

@@ -28,30 +28,4 @@ const handler = async (event) => {
     }
   }
   }
-  
-
-
-  
-  
-
-  // getSearchResults(input: string){
-
-  //   let URL = this.SEARCH_API_URL + '&text=' + input;
-  //   this.http.get<Search>(URL).subscribe({
-  //     next: response => this.search$.next(response.features.map(x => x.properties.address_line1)),
-  //     error: e => console.error('search failed')
-  //   });
-  // }
-
-  // getWeatherBySearchLocation(location: string){
-  //   let URL = this.BASE_URL + '&q='+location+'&aqi=yes';
-  //   this.http.get<Weather>(URL).subscribe({
-  //     next: (response) => {
-  //       this.weather$.next(response);
-  //     },
-  //     error: (e) => alert('Location not found!'),
-  // });
-  // }
-
-
 module.exports = { handler }
