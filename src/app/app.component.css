@@ -12,12 +12,14 @@
         height: 100dvh;
     }
     .content{
-        height: 95dvh;
+        height: 94dvh;
         display: flex;
         flex-direction: row;
         overflow-x: auto;
+        overflow-y: hidden;
         white-space: nowrap;
         scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
         -webkit-tap-highlight-color: transparent;
     }
@@ -31,6 +33,7 @@
         gap: 0px;
         display: block;
         align-items: center;
+        scroll-behavior: smooth;
     }
     #outlet{
         height: 90dvw;
@@ -45,7 +48,7 @@
         flex-direction: row;
         align-items: center;
         justify-content: space-around;
-        height: 5dvh;
+        height: 6dvh;
         width:100dvw;
         overflow-x:hidden;
     }
@@ -57,5 +60,8 @@
     a:active{
         border-bottom: 2px solid red;
         color: navy;
+    }
+    .nav-list > a{
+        transition: all 0.3s ease-in-out;
     }
 }

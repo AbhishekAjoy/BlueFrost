@@ -23,7 +23,6 @@ export class AppComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    window.location.href = '/#weather';
     if(window.screen.availWidth < 768 ){
       this.isMobile = true;
     } 
@@ -33,6 +32,6 @@ export class AppComponent implements OnInit {
     let lat = parseFloat(localStorage.getItem('latitude')??'40.71');
     let long = parseFloat(localStorage.getItem('longitude')?? '-74.01'); 
     this.weatherapiService.getWeatherBySearchLocation(lat,long);
-
+    document.getElementById('weather')?.scrollIntoView();
   }
 }

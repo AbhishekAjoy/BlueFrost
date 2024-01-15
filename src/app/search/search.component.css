@@ -84,10 +84,10 @@ input:focus{
         max-width: none;
     }
     .card{
-        margin-top: 10px;
+        margin-top: 20px;
         align-self: center;
         width: 80dvw;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
     }
 
     .results-container{

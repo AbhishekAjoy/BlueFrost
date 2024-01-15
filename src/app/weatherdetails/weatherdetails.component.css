@@ -70,6 +70,7 @@
         height: 35dvw;
         max-width: 50dvw;
         max-height: 50dvw;
+        text-wrap: wrap;
     }
 
     .icon{
