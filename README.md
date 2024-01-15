@@ -11,10 +11,7 @@ Live link: https://bluefrost.netlify.app/
 - API requests performed using Netlify functions to avoid API key leaks
 
 ## Working on/TODO:
-- First Load requiring reload as location is not accessible after user gives permission for first time.
-- Handling negative search cases.
-- Navigation indicators/icons
-- Progressive Web App with location caching and push notifications.
+- Progressive Web App with push notifications.
 
 ## Development server
 
