@@ -1,6 +1,20 @@
 # BlueFrost
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.3.
+A weather app, shows weather of current location and other locations.
+Live link: https://bluefrost.netlify.app/
+
+## Features:
+- Temperature, windspeed, AQI etc.
+- Theme change according to day/night time.
+- Search/Current geolocation based weather.
+- Search Auto-complete implemented.
+- API requests performed using Netlify functions to avoid API key leaks
+
+## Working on/TODO:
+- First Load requiring reload as location is not accessible after user gives permission for first time.
+- Handling negative search cases.
+- Navigation indicators/icons
+- Progressive Web App with location caching and push notifications.
 
 ## Development server
 
