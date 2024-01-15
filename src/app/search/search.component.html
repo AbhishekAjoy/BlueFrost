@@ -1,10 +1,10 @@
 <div *ngIf ="this.weatherapiService.current$ | async as current" class="search-container" [ngStyle] = "current.is_day ? {'background-color':'#0073e6'} : {'background-color': 'navy'}">
     <div class="card" tabIndex="1">
-        <input type="text" placeholder="Enter Location (Min: 3 char)" [(ngModel)] = 'searchTerm' (keydown.enter) ="searchLocation()">
+        <input type="text" placeholder="Enter Location (Min: 3 char)" [(ngModel)] = 'searchTerm' (keydown.enter) ="searchLocation()" maxlength="200">
         <button id="search-button" type = "submit" (click) = "searchLocation()"><img class = "icons" src="../../assets/search.png" alt="search"></button>
     </div>
     <div *ngIf = "this.weatherapiService.search$ | async as search" class = "results-container">
-        <div *ngFor = "let item of search" class = card (click) = "searchFromResult(item)">
+        <div *ngFor = "let item of search" class = card (click) = "searchFromResult(item.lat, item.lon)">
             {{item.name}}, {{item.region}}, {{item.country}}
         </div>
     </div>

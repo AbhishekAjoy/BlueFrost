@@ -1,4 +1,5 @@
-import { Component, DoCheck, HostListener, OnInit, inject } from '@angular/core';
+import { Component, HostListener, OnInit} from '@angular/core';
+import { Location }  from './_interfaces/weather.interface';
 import { WeatherapiService } from './_services/weatherapi.service';
 
 @Component({
@@ -20,6 +21,7 @@ export class AppComponent implements OnInit {
       this.isMobile = false;
     }
   }
+  
   ngOnInit(): void {
     window.location.href = '/#weather';
     if(window.screen.availWidth < 768 ){
@@ -28,8 +30,9 @@ export class AppComponent implements OnInit {
     else{
       this.isMobile = false;
     }
-    if(!(localStorage.getItem('lat') && localStorage.getItem('long'))){
-      this.weatherapiService.getWeatherByCurrentLocation();
-    }
+    let lat = parseFloat(localStorage.getItem('latitude')??'40.71');
+    let long = parseFloat(localStorage.getItem('longitude')?? '-74.01'); 
+    this.weatherapiService.getWeatherBySearchLocation(lat,long);
+
   }
 }

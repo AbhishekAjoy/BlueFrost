@@ -37,7 +37,6 @@ declare namespace NodeJS {
   export interface ProcessEnv {
     readonly NODE_ENV: string;
     readonly NG_APP_API_KEY: string;
-    readonly NG_APP_AUTOCOMPLETE_API: string;
     // Add your environment variables below
   }
 }

@@ -7,7 +7,6 @@
     width: 100dvw;
     gap: 5px
 }
-
 @media only screen and (max-width: 768px) {
     #mob{
         height: 100dvh;
@@ -16,11 +15,13 @@
         height: 95dvh;
         display: flex;
         flex-direction: row;
+        overflow-x: auto;
+        white-space: nowrap;
         scroll-snap-type: x mandatory;
-        scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
         -webkit-tap-highlight-color: transparent;
     }
-    section{
+    .content > section{
         width:100dvw;
         height: 100dvh;
         scroll-snap-align: center;
@@ -50,14 +51,10 @@
     }
     a{
         text-decoration: none;
-    }
-    li{
-        list-style-type: none;
-        color: black;
         font-size: 1.2rem;
-        cursor: pointer;
+        cursor:pointer;
     }
-    a:focus{
+    a:active{
         border-bottom: 2px solid red;
         color: navy;
     }

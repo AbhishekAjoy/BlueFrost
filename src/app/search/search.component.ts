@@ -25,8 +25,8 @@ export class SearchComponent {
   searchLocation(){
     this.weatherapiService.getSearchResults(this.searchTerm.trim());
   }
-  searchFromResult(result: Location){
-    this.weatherapiService.getWeatherBySearchLocation(result);
+  searchFromResult(lat:number, lon: number){
+    this.weatherapiService.getWeatherBySearchLocation(lat, lon);
     document.getElementById('weather')?.scrollIntoView();
     this.weatherapiService.search$.next([]);
     this.searchTerm = '';
