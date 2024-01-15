@@ -18,7 +18,7 @@ export class WeatherapiService {
 
   getLocation() {
     if (!navigator.geolocation) {
-      console.log('Geolocation is not supported by your browser');
+      alert('Geolocation is not supported by your browser');
     } else {
       navigator.geolocation.getCurrentPosition(
         (position) => {
@@ -47,7 +47,6 @@ export class WeatherapiService {
        this.location$ = this.weather$.pipe(map(x => x.location));
        this.condition$ = this.current$.pipe(map(x => x?.condition))
     });
-    console.log(this.weather$);
   }
   getWeatherByCurrentLocation() {
 
